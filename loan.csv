@@ -1,0 +1,9 @@
+﻿product_group,product_name,tranch,daily_charge,intrest_rate,min_amount,max_amount,start_date,End_date
+loan,personal loan,up to 2999,,26.7,1000,2999,01/01/2019,
+loan,personal loan,up to 4999,,24.9,3000,4999,01/01/2019,
+loan,personal loan,up to 7999,,15.4,5000,7999,01/01/2019,
+loan,personal loan,up to 25999,,3.9,8000,25999,01/01/2019,
+loan,personal loan,up to 35000,,6.3,26000,35999,01/01/2019,
+loan,personal loan,up to 50000,,7.3,36000,50000,01/01/2019,
+loan,home imporvement loan,,,3.83,1,9999,01/01/2019,
+loan,home imporvement loan,,,3,10000,25000,01/01/2019,
