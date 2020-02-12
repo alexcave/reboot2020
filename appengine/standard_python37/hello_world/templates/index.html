@@ -42,12 +42,12 @@
   <div class="container">
 
     <!-- Jumbotron Header -->
-    <header class="jumbotron my-4">
+    <header class="jumbotron my-4 text-center">
 	
 	
 
 <div class="parent">
-    <img class="child" src="horse2.png"/>
+    <img class="child" src="../static/horse2.png"/>
 </div>
 	
 
@@ -56,22 +56,26 @@ function showValue(newValue)
 {
 document.getElementById("value").value=newValue;
 }
+
+function showValue2(newValue)
+{
+document.getElementById("termvalue").value=newValue;
+}
 </script>
 
-
-      <h1 class="display-3">Welcome to Lending Solutions!</h1>
-	        <p class="lead">How much would you like to borrow?</p>
+      <h1 class="display-3 text-white">Welcome to Lending Solutions!</h1>
+	        <p class="lead text-white">How much would you like to borrow?</p>
 	  <div class="slidecontainer">
-  <input type="range" min="1" max="100" value="50" class="slider" id="myRange", onchange="showValue(this.value)>
+  <input type="range" min="1" max="50000" value="10000" class="slider" id="myRange", onchange="showValue(this.value)">
 </div>
 <p id="tbox1">
 <input type="text" id="value">
 </p>
 
 
-	        <p class="lead">What is your preferred term of loan?</p>
+	        <p class="lead text-white">What is your preferred term of loan?</p>
 	  <div class="slidecontainer">
-  <input type="range" min="1" max="100" value="50" class="slider" id="myRange2" onchange="showValue(this.value)">
+  <input type="range" min="1" max="20" value="2" class="slider" id="myRange2" onchange="showValue2(this.value)">
 </div>
 
 
@@ -91,7 +95,7 @@ document.getElementById("value").value=newValue;
 
       <div class="col-lg-3 col-md-6 mb-4">
         <div class="card h-100">
-          <img class="card-img-top" src="../static/coins.png" alt="">
+          <img class="card-img-top" src="../static/coins.PNG" alt="">
           <div class="card-body">
             <h4 class="card-title">Current accounts</h4>
             <p class="card-text">Our current accounts have competitive interest rates on overdrafts.</p>
@@ -104,7 +108,7 @@ document.getElementById("value").value=newValue;
 
       <div class="col-lg-3 col-md-6 mb-4">
         <div class="card h-100">
-          <img class="card-img-top" src="loan.png" alt="">
+          <img class="card-img-top" src="../static/loan.png" alt="">
           <div class="card-body">
             <h4 class="card-title">Loans</h4>
             <p class="card-text">Why not take out a loan?</p>
@@ -117,10 +121,10 @@ document.getElementById("value").value=newValue;
 
       <div class="col-lg-3 col-md-6 mb-4">
         <div class="card h-100">
-          <img class="card-img-top" src="car.png" alt="">
+          <img class="card-img-top" src="../static/car.png" alt="">
           <div class="card-body">
             <h4 class="card-title">Car finance</h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+            <p class="card-text">Car finance can be a nifty way to buy a car.</p>
           </div>
           <div class="card-footer">
             <a href="#" class="btn btn-primary">Find Out More!</a>
@@ -130,7 +134,7 @@ document.getElementById("value").value=newValue;
 
       <div class="col-lg-3 col-md-6 mb-4">
         <div class="card h-100">
-          <img class="card-img-top" src="creditcard.png" alt="">
+          <img class="card-img-top" src="../static/creditcard.PNG" alt="">
           <div class="card-body">
             <h4 class="card-title">Credit Card</h4>
             <p class="card-text">Credit cards can be a handy lending solution!</p>
@@ -150,7 +154,7 @@ document.getElementById("value").value=newValue;
   <!-- Footer -->
   <footer class="py-5 bg-dark">
     <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+      <p class="m-0 text-center text-white">Copyright &copy; Lending Solutions 2020</p>
     </div>
     <!-- /.container -->
   </footer>
