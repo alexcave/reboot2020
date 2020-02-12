@@ -1,6 +1,6 @@
 import pandas as pd
 import argparse
-import sqlalchemy
+# import sqlalchemy
 
 db_user = 'user'
 db_pass = 'password'
@@ -49,48 +49,53 @@ cloud_sql_connection_name = 'lbg-reboot-feb2020-team-11:europe-west2:lending-sol
 # df = pd.read_sql(sql = query, con = db.engine)
 
 
-def cost_of_loan(amount, term_in_days, apr):
 
-    daily_rate = apr/ 100 / 365 
+def df_runner(amount, term):
 
-    daily_cost = amount * term_in_days * daily_rate
-
-    return daily_cost
-
-
-def calculate(amount, term):
-
-    if amount <= 1200:
-        recommendation = 'pca'
-
-    elif amount > 1200 and term <= 30:
-        recommendation = 'credit_card'
+    # df = pd.read_sql()
     
-    else :
-        recommendation = 'loan'
-
-    return recommendation
-
-
-def main_runner(input_amount, input_term):
+    df_pca = pd.read_csv("C:\\Users\\Andreas Armstrong\\Documents\\Python Projects\\reboot2020\\pca_data.csv")
+    df_car_finance = pd.read_csv("C:\\Users\\Andreas Armstrong\\Documents\\Python Projects\\reboot2020\\car_finance.csv")
+    df_credit_card = pd.read_csv("C:\\Users\\Andreas Armstrong\\Documents\\Python Projects\\reboot2020\\credit_card.csv")
+    df_loan = pd.read_csv("C:\\Users\\Andreas Armstrong\\Documents\\Python Projects\\reboot2020\\loan.csv")
 
 
-    recommended_product = calculate(input_amount, input_term)
+    df = pd.concat([df_pca, df_car_finance, df_credit_card, df_loan])
 
-    # if recommended_product in ['loan', 'credit_card']:
-        
-    cost = cost_of_loan(input_amount, input_term, apr = 5 )
 
-    print("Recommended Product: ", recommended_product)
-    print("Cost of loan: ", cost)
+    # check where amount is not greater than max
+    df = df[df["max_amount"] >= amount]
+    
+    # check where amount is greater than min
+    df = df[df["min_amount"] <= amount]
+    
+    # daily_rate
+    df["daily_rate"] =  df["intrest_rate"]/ 100 / 365
+
+    # cost
+    df["cost"] = df["daily_charge"] * amount * term 
+
+    min_cost = df["cost"].min()
+
+    df = df.loc[df["cost"] == min_cost].sort_values(by = "intrest_rate", ascending=True)
+    df = df.drop_duplicates(keep='first')
+
+    recommended_product_group = df.loc[0, "product_group"]
+    recommended_product_name = df.loc[0, "product_name"]
+    recommended_product_cost = df.loc[0, "cost"]
+
+    return recommended_product_group, recommended_product_name, recommended_product_cost
+    
+    
+
 
 
 if __name__ == '__main__':
         
     parser = argparse.ArgumentParser(description='Process some integers.')
-    parser.add_argument('--input_amount', type=float, default=500)
-    parser.add_argument('--input_term', type = int, default=30)
+    parser.add_argument('--input_amount', type=float, default=1300)
+    parser.add_argument('--input_term', type = int, default=12)
 
     args = parser.parse_args()
 
-    main_runner(args.input_amount, args.input_term)
+    print(df_runner(args.input_amount, args.input_term))
