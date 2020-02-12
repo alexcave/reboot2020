@@ -1,0 +1,7 @@
+﻿product_group,product_name,tranch,daily_charge,intrest_rate,min_amount,max_amount,start_date,End_date
+car_loan,personal loan,up to 2999,0,5.3,1000,2999,01/01/2019,
+car_loan,personal loan,up to 4999,0,5.3,3000,4999,01/01/2019,
+car_loan,personal loan,up to 7999,0,5.3,5000,7999,01/01/2019,
+car_loan,personal loan,up to 25999,0,5.3,8000,25999,01/01/2019,
+car_loan,personal loan,up to 35000,0,5,26000,35999,01/01/2019,
+car_loan,personal loan,up to 50000,0,4.3,36000,50000,01/01/2019,
