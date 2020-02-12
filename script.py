@@ -68,6 +68,7 @@ def df_runner(amount, term):
 
     df = pd.concat([df_pca, df_credit_card, df_loan])
 
+    df["daily_charge"] = df["daily_charge"].fillna(0)
 
     # check where amount is not greater than max
     df = df[df["max_amount"] >= amount]
@@ -79,7 +80,7 @@ def df_runner(amount, term):
     df["daily_rate"] =  df["intrest_rate"]/ 100 / 365
 
     # cost
-    df["cost"] = df["daily_rate"] * amount * term 
+    df["cost"] = (df["daily_rate"]* term * amount) + (df["daily_charge"]* term )
 
     min_cost = df["cost"].min()
 
